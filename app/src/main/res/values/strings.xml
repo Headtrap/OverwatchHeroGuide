@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Overwatch Hero Guide</string>
+    <string name="options">Options</string>
+    <string name="logout">Logout</string>
+
+
+    <string name="title_heroes">Heroes</string>
+    <string name="title_maps">Maps</string>
+    <string name="title_strategy">Strategy</string>
+    <string name="coming_soon">Coming soon™</string>
+</resources>
