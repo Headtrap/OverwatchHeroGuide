@@ -38,7 +38,7 @@ import java.util.Map;
 public class BaseActivity extends livroandroid.lib.activity.BaseActivity {
     private Map<String, AsyncTask> tasks = new HashMap<String, AsyncTask>();
     private ProgressDialog progress;
-
+    private View view;
 
 
     public void setupToolbar() {
@@ -77,10 +77,10 @@ public class BaseActivity extends livroandroid.lib.activity.BaseActivity {
 
     public void startTask(String cod, TaskListener listener, int progressId) {
         Log.d("livroandroid", "startTask: " + cod);
-        /*View view = getWindow().getDecorView().getRootView();
+        view = getWindow().getDecorView().getRootView();
         if (view == null) {
             throw new RuntimeException("Somente pode iniciar a task se a view do fragment foi criada.\nChame o startTask depois do onCreateView");
-        }*/
+        }
 
         Task task = (Task) this.tasks.get(cod);
         if (task == null) {
@@ -106,7 +106,7 @@ public class BaseActivity extends livroandroid.lib.activity.BaseActivity {
         @Override
         protected void onPreExecute() {
             Log.d("livroandroid", "task onPreExecute()");
-//            showProgress(this, progressId);
+            showProgress(this, progressId, view);
         }
 
         @Override
@@ -137,6 +137,7 @@ public class BaseActivity extends livroandroid.lib.activity.BaseActivity {
                 e.printStackTrace();
             } finally {
                 tasks.remove(cod);
+                closeProgress(progressId, view);
             }
         }
 
