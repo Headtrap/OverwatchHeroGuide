@@ -2,8 +2,6 @@
 package com.apps.headtrap.overwatchheroguide.activity;
 
 
-import android.content.res.AssetManager;
-import android.graphics.Typeface;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.apps.headtrap.overwatchheroguide.R;
-import com.apps.headtrap.overwatchheroguide.fragment.TabsFragment;
+import com.apps.headtrap.overwatchheroguide.fragment.MainTabsFragment;
 import com.squareup.picasso.Picasso;
 
 
@@ -41,7 +39,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
         if (savedInstanceState == null)
         {
-            TabsFragment frag = new TabsFragment();
+            MainTabsFragment frag = new MainTabsFragment();
             replaceFragment(frag, R.id.container);
         }
     }

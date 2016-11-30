@@ -48,24 +48,12 @@
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"></android.support.v7.widget.Toolbar>
+                android:theme="@style/AppTheme.AppBarOverlay"
+                app:popupTheme="@style/AppTheme.PopupOverlay"/>
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/settingsSize"
-        android:clickable="true"
-        android:src="@drawable/favorite_outline"
-        android:tint="@color/white"
-        app:backgroundTint="@color/color_pallet_orange_300"
-        app:layout_anchor="@+id/appbar"
-        app:layout_anchorGravity="bottom|right|end" />
-
 
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/nestedScrollView"

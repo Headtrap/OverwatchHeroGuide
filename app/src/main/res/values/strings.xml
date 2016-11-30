@@ -8,4 +8,9 @@
     <string name="title_maps">Maps</string>
     <string name="title_strategy">Strategy</string>
     <string name="coming_soon">Coming soon™</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_abilities">Abilities</string>
+    <string name="title_how_to">How to play</string>
 </resources>

@@ -19,7 +19,7 @@ import com.apps.headtrap.overwatchheroguide.activity.HeroDetailsActivity;
 import com.apps.headtrap.overwatchheroguide.adapter.HeroesAdapter;
 import com.apps.headtrap.overwatchheroguide.domain.Hero;
 import com.apps.headtrap.overwatchheroguide.utils.Constants;
-import com.apps.headtrap.overwatchheroguide.utils.CreateHeroes;
+import com.apps.headtrap.overwatchheroguide.utils.HeroManager;
 
 import java.util.List;
 
@@ -57,7 +57,7 @@ public class HeroesFragment extends BaseFragment implements HeroesAdapter.HeroCa
     public void onStart()
     {
         super.onStart();
-        heroes = CreateHeroes.getHeroes();
+        heroes = HeroManager.getHeroes();
         adapter = new HeroesAdapter(getContext(), heroes, HeroesFragment.this);
         recyclerView.setAdapter(adapter);
 

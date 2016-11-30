@@ -10,7 +10,7 @@ import java.util.List;
  * Created by Gustavo on 11/25/2016.
  */
 
-public class CreateHeroes
+public class HeroManager
 {
     public static List<Hero> getHeroes()
     {

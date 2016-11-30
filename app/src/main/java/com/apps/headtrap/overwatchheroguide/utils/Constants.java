@@ -13,4 +13,6 @@ public class Constants
     public static final String KEY_TRANSITION_DETAILS = "KEY_DETAILS";
     public static final String FONT_TITLE = "bignoodletoo.ttf";
     public static final String FONT_MENU = "koverwatch.ttf";
+    public static final String TITLE_ABILITIES = "Abilities";
+    public static final String TITLE_HOW_TO = "How to play";
 }

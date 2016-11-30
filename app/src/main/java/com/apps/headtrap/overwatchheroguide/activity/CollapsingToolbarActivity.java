@@ -49,8 +49,6 @@ public class CollapsingToolbarActivity extends BaseActivity {
 
 //        frameImagePost.setOnClickListener(onClickImage());
 
-
-        //recebe e faz a animação
         ViewCompat.setTransitionName(frameImagePost, Constants.KEY_TRANSITION_DETAILS);
     }
 

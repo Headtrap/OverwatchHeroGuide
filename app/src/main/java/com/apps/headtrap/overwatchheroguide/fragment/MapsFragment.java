@@ -15,12 +15,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.apps.headtrap.overwatchheroguide.R;
-import com.apps.headtrap.overwatchheroguide.activity.HeroDetailsActivity;
 import com.apps.headtrap.overwatchheroguide.activity.MapDetailsActivity;
 import com.apps.headtrap.overwatchheroguide.adapter.MapsAdapter;
 import com.apps.headtrap.overwatchheroguide.domain.Map;
 import com.apps.headtrap.overwatchheroguide.utils.Constants;
-import com.apps.headtrap.overwatchheroguide.utils.CreateHeroes;
+import com.apps.headtrap.overwatchheroguide.utils.HeroManager;
 
 import java.util.List;
 
@@ -61,7 +60,7 @@ public class MapsFragment extends BaseFragment implements MapsAdapter.MapCallbac
     {
         super.onResume();
 
-        maps = CreateHeroes.getMaps();
+        maps = HeroManager.getMaps();
 
         adapter = new MapsAdapter(getContext(), maps, MapsFragment.this);
         recyclerView.setAdapter(adapter);
