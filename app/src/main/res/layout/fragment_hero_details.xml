@@ -1,15 +1,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
               android:id="@+id/rootView"
+              android:background="@color/colorBackgrounds"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               tools:context="com.apps.headtrap.overwatchheroguide.fragment.HeroDetailsFragment">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerViewAbilities"
+        android:background="@color/colorBackgrounds"
+        android:layout_marginBottom="5dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-
+</ScrollView>
 </LinearLayout>

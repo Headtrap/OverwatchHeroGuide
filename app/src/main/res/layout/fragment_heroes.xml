@@ -9,6 +9,7 @@
     <include layout="@layout/include_progress"/>
 
     <android.support.v7.widget.RecyclerView
+        android:background="@color/colorBackgrounds"
         android:id="@+id/recyclerViewHeroes"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

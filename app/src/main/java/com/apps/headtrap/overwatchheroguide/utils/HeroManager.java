@@ -12,9 +12,6 @@ import java.util.List;
  */
 
 public class HeroManager {
-    public static List<Hero> heroes = new ArrayList<>();
-
-
     public static List<Ability> createAbilities(String abilityName1,
                                                 String abilityDesc1,
                                                 String abilityIcon1,
@@ -32,6 +29,7 @@ public class HeroManager {
                                                 String abilityIcon4
     ) {
         List<Ability> abilities = new ArrayList<>();
+
         Ability a1 = new Ability();
         a1.setAbilityName(abilityName1);
         a1.setAbilityDescription(abilityDesc1);
@@ -60,25 +58,27 @@ public class HeroManager {
     }
 
     public static List<Hero> getHeroes() {
+        List<Hero> heroes = new ArrayList<>();
+
         Hero h1 = new Hero();
         h1.setHeroName("Genji");
         h1.setHeroPicture("https://blzgdapipro-a.akamaihd.net/media/thumbnail/genji-gameplay.jpg");
         h1.setHeroAbilities(createAbilities(
                 "Shuriken",
                 "Throw 3 shurikens in quick sucession, or alternate fire to throw 3 at the same time in a fan in front of you",
-                "http://imgur.com/2164FH2",
+                "http://i.imgur.com/2164FH2.png",
 
                 "Swift strike",
                 "Dashes forward damaging all heroes on your path, if an enemy hero dies, the cooldown resets",
-                "http://imgur.com/N9xI0wx",
+                "http://i.imgur.com/N9xI0wx.png",
 
                 "Deflect",
                 "Delects any projectile coming from the direction you are facing for a small period of time",
-                "http://imgur.com/JZsbdic",
+                "http://i.imgur.com/JZsbdic.png",
 
                 "Dragonblade",
                 "Genji unsheats his sword and is able to perform a strong melee attack, that hits all heroes that are close in front of you",
-                "http://imgur.com/DKHe2TI"));
+                "http://i.imgur.com/DKHe2TI.png"));
 
         heroes.add(h1);
 
@@ -88,19 +88,19 @@ public class HeroManager {
         h2.setHeroPicture("http://i.imgur.com/qfSamoj.jpg");
         h2.setHeroAbilities(createAbilities(
                 "Endothermic blaster",
-                "Main weapon",
+                "Mei`s main weapon is a close range spray that if constantly hits the enemy for a few seconds will frozen them in place for a couple of seconds. Or right click to shot a high damage long range projectile",
                 "http://i.imgur.com/dfJ1eSh.png",
 
                 "Cryo-freeze",
-                "Invulnerable",
+                "Turns Mei into a ice block, making her invulnarable for a few seconds and healing her",
                 "http://i.imgur.com/UQqaQT2.png",
 
                 "Ice wall",
-                "Wall",
+                "Casts a wall on the battefield that will block heroes and projectiles",
                 "http://i.imgur.com/OUmZ9WD.png",
 
                 "Blizzard",
-                "Freezes",
+                "Throw a droid into the ground and freezes all enemies in a big area around it",
                 "http://i.imgur.com/Uu2RXvb.png"));
 
         heroes.add(h2);
@@ -112,16 +112,16 @@ public class HeroManager {
         h19.setHeroAbilities(createAbilities(
                 "Sonic amplifier",
                 "Emits a strong sound wave, which alternates between long range projectiles and a close range burst that pushes enemies away",
-                "http://imgur.com/JI4EFfa",
+                "http://i.imgur.com/JI4EFfa.png",
                 "Crossfade",
-                "Lucio contatly plays two songs, one heals nearby allies while the other grants them movement speed, use Crossfade to alternate between the two modes",
-                "http://imgur.com/1gCL5lv",
+                "Lucio constatly plays two songs, one heals nearby allies while the other grants them movement speed, use Crossfade to alternate between the two modes",
+                "http://i.imgur.com/1gCL5lv.png",
                 "Amp it up",
-                "Enhances one the effects of Lucios current song",
-                "http://imgur.com/411yGoJ",
+                "Enhances the effects of Lucio's current song",
+                "http://i.imgur.com/411yGoJ.png",
                 "Sound barrier (Bro shield",
                 "Grants a big shield to al nearby allies during a short period of time",
-                "http://imgur.com/KG6HZ87"));
+                "http://i.imgur.com/KG6HZ87.png"));
 
         heroes.add(h19);
 
@@ -304,7 +304,6 @@ public class HeroManager {
         m10.setMapName("Nepal");
         m10.setMapPicture("http://www.gameinformer.com/cfs-filesystemfile.ashx/__key/CommunityServer-Components-ImageFileViewer/CommunityServer-Components-SiteFiles-imagefeed-featured-blizzard-overwatch-gamer_2D00_culture/nepal_5F00_overwatch_5F00_610.jpg_2D00_610x0.jpg");
         maps.add(m10);
-
 
         return maps;
     }

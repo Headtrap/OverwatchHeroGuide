@@ -1,6 +1,8 @@
 package com.apps.headtrap.overwatchheroguide.adapter;
 
 import android.content.Context;
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,9 +12,11 @@ import android.widget.TextView;
 
 import com.apps.headtrap.overwatchheroguide.R;
 import com.apps.headtrap.overwatchheroguide.domain.Ability;
+import com.apps.headtrap.overwatchheroguide.utils.Constants;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Gustavo on 11/30/2016.
@@ -39,12 +43,14 @@ public class AbilitiesAdapter extends RecyclerView.Adapter<AbilitiesAdapter.Abil
     public void onBindViewHolder(AbilitiesViewHolder holder, int position) {
         ability = items.get(position);
         if(ability != null) {
+            AssetManager am = context.getApplicationContext().getAssets();
+            Typeface tf = Typeface.createFromAsset(am,String.format(Locale.US, Constants.FONT_TITLE));
             holder.tvAbilityDescription.setText(ability.getAbilityDescription());
-            holder.tvAbilityName.setText(ability.getAbilityName());
+            holder.tvAbilityName.setText(ability.getAbilityName()+" ");
+            holder.tvAbilityName.setTypeface(tf);
 
             Picasso.with(context)
                     .load(ability.getAbilityIcon())
-                    .fit()
                     .into(holder.imAbilityIcon);
         }
 
