@@ -5,7 +5,7 @@ import android.support.v7.app.ActionBar;
 
 import com.apps.headtrap.overwatchheroguide.R;
 import com.apps.headtrap.overwatchheroguide.domain.Hero;
-import com.apps.headtrap.overwatchheroguide.fragment.HeroTabsFragment;
+import com.apps.headtrap.overwatchheroguide.fragment.HeroDetailsFragment;
 
 public class HeroDetailsActivity extends CollapsingToolbarActivity
 {
@@ -33,7 +33,8 @@ public class HeroDetailsActivity extends CollapsingToolbarActivity
         }
 
         if (savedInstanceState == null){
-            HeroTabsFragment fragment = new HeroTabsFragment();
+            HeroDetailsFragment fragment = new HeroDetailsFragment();
+            fragment.setArguments(getIntent().getExtras());
             replaceFragment(fragment, R.id.container);
         }
 
