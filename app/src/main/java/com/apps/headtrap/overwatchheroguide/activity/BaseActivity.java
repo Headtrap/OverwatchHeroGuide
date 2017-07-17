@@ -2,6 +2,7 @@ package com.apps.headtrap.overwatchheroguide.activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
@@ -13,10 +14,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.apps.headtrap.overwatchheroguide.R;
@@ -35,7 +40,7 @@ import java.util.Map;
 /**
  * Created by Gustavo on 10/05/2016.
  */
-public class BaseActivity extends livroandroid.lib.activity.BaseActivity {
+public class BaseActivity extends AppCompatActivity {
     private Map<String, AsyncTask> tasks = new HashMap<String, AsyncTask>();
     private ProgressDialog progress;
     private View view;
@@ -45,13 +50,18 @@ public class BaseActivity extends livroandroid.lib.activity.BaseActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
-
-            TextView toolbarTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
-            AssetManager am = getContext().getApplicationContext().getAssets();
-            Typeface tf = Typeface.createFromAsset(am, String.format(Locale.US, Constants.FONT_TITLE));
-            toolbarTitle.setTypeface(tf);
             setSupportActionBar(toolbar);
         }
+    }
+
+    public void setupActionBar(String actionBarTitle) {
+        ActionBar actionbar = getSupportActionBar();
+        if (actionbar != null) {
+            actionbar.setTitle(actionBarTitle);
+            actionbar.setDisplayHomeAsUpEnabled(true);
+            actionbar.setHomeButtonEnabled(true);
+        }
+
     }
 
     public void hideToolbar() {
@@ -76,7 +86,7 @@ public class BaseActivity extends livroandroid.lib.activity.BaseActivity {
     }
 
     public void startTask(String cod, TaskListener listener, int progressId) {
-        Log.d("livroandroid", "startTask: " + cod);
+        Log.d("custom task", "startTask: " + cod);
         view = getWindow().getDecorView().getRootView();
         if (view == null) {
             throw new RuntimeException("Somente pode iniciar a task se a view do fragment foi criada.\nChame o startTask depois do onCreateView");
@@ -105,7 +115,7 @@ public class BaseActivity extends livroandroid.lib.activity.BaseActivity {
 
         @Override
         protected void onPreExecute() {
-            Log.d("livroandroid", "task onPreExecute()");
+            Log.d("custom task", "task onPreExecute()");
             showProgress(this, progressId, view);
         }
 
@@ -115,14 +125,14 @@ public class BaseActivity extends livroandroid.lib.activity.BaseActivity {
             try {
                 r.response = listener.execute();
             } catch (Exception e) {
-                Log.e("livroandroid", e.getMessage(), e);
+                Log.e("custom task", e.getMessage(), e);
                 r.exception = e;
             }
             return r;
         }
 
         protected void onPostExecute(TaskResult result) {
-            Log.d("livroandroid", "task onPostExecute(): " + result);
+            Log.d("custom task", "task onPostExecute(): " + result);
             try {
                 if (result != null) {
                     if (result.exception != null) {
@@ -136,8 +146,8 @@ public class BaseActivity extends livroandroid.lib.activity.BaseActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
-                tasks.remove(cod);
                 closeProgress(progressId, view);
+                tasks.remove(cod);
             }
         }
 
@@ -199,7 +209,7 @@ public class BaseActivity extends livroandroid.lib.activity.BaseActivity {
             }
         }
 
-        Log.d("livroandroid", "closeProgress()");
+        Log.d("custom task", "closeProgress()");
         if (progress != null && progress.isShowing()) {
             progress.dismiss();
             progress = null;
@@ -294,19 +304,49 @@ public class BaseActivity extends livroandroid.lib.activity.BaseActivity {
 
     }
 
-    protected void snack(View view, String msg, String button,final Runnable runnable) {
-        Snackbar.make(view, msg, Snackbar.LENGTH_LONG).setAction(button, new View.OnClickListener() {
+    protected void snack(View view, int msg, Runnable runnable) {
+        this.snack(view, this.getString(msg), runnable);
+    }
+
+    protected void snack(View view, int msg) {
+        this.snack(view, this.getString(msg), (Runnable) null);
+    }
+
+    protected void snack(View view, String msg) {
+        this.snack(view, msg, (Runnable) null);
+    }
+
+    protected void snack(View view, String msg, final Runnable runnable) {
+        Snackbar.make(view, msg, 0).setAction("Ok", new View.OnClickListener() {
             public void onClick(View v) {
-                if(runnable != null) {
+                if (runnable != null) {
                     runnable.run();
                 }
-
             }
         }).show();
     }
 
-    public static void minimizeApp(){
-
+    protected boolean isEmpty(EditText etText) {
+        if (etText.getText().toString().trim().length() > 0) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
+    protected Context getContext() {
+        return this;
+    }
+
+    protected Activity getActivity() {
+        return this;
+    }
+
+    protected void hideSoftKeyboard() {
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
 }
