@@ -36,7 +36,6 @@ public class HeroesFragment extends BaseFragment implements HeroesAdapter.HeroCa
 
     public HeroesFragment()
     {
-        // Required empty public constructor
     }
 
 
